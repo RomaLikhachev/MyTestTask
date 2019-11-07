@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/text_title"
-    style="@style/SingleSubheadText"
-    android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:gravity="center_vertical"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:background="?selectableItemBackground"
-    tools:text="Developer" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="specialty"
+            type="com.test.mytesttask.model.Specialty"/>
+
+        <variable
+            name="navActionListener"
+            type="com.test.mytesttask.ui.specialty.SpecialtyRecyclerAdapter.NavActionListener" />
+    </data>
+
+    <TextView
+        android:id="@+id/text_title"
+        style="@style/SingleSubheadText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="?selectableItemBackground"
+        android:text="@{specialty.name}"
+        android:onClick="@{() -> navActionListener.listAction(specialty)}"
+        tools:text="Developer" />
+</layout>

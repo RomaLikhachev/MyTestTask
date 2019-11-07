@@ -1,112 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    android:clipToPadding="false">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="employee"
+            type="com.test.mytesttask.model.Employee"/>
+
+        <variable
+            name="specialtiesTitle"
+            type="String" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingStart="16dp"
-        android:paddingRight="16dp"
-        android:paddingEnd="16dp">
+        android:paddingTop="8dp"
+        android:clipToPadding="false">
 
-        <LinearLayout
-            android:id="@+id/layout_item_name"
-            style="@style/InfoItemContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingRight="16dp"
+            android:paddingEnd="16dp">
 
-            <TextView
-                style="@style/OverlineText"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/layout_item_name"
+                style="@style/InfoItemContainer"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/title_overline_name" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/text_title_name"
-                style="@style/SingleSubheadText"
-                android:layout_width="match_parent"
+                <TextView
+                    style="@style/OverlineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_overline_name" />
+
+                <TextView
+                    android:id="@+id/text_title_name"
+                    style="@style/SingleSubheadText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/format_full_name(employee.firstName, employee.lastName)}"
+                    tools:text="Roman Likhachev" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_item_birthday"
+                style="@style/InfoItemContainer"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="Roman Likhachev" />
-        </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/layout_item_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layout_item_birthday"
-            style="@style/InfoItemContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/layout_item_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    style="@style/OverlineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_overline_birthday" />
 
-            <TextView
-                style="@style/OverlineText"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/text_title_birthday"
+                    style="@style/SingleSubheadText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{employee.birthday != null ? @string/format_birthday(employee.birthday) : `-`}"
+                    tools:text="23.11.1987" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_item_age"
+                style="@style/InfoItemContainer"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/title_overline_birthday" />
+                app:layout_constraintTop_toBottomOf="@id/layout_item_birthday"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/text_title_birthday"
-                style="@style/SingleSubheadText"
-                android:layout_width="match_parent"
+                <TextView
+                    style="@style/OverlineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_overline_age" />
+
+                <TextView
+                    android:id="@+id/text_title_age"
+                    style="@style/SingleSubheadText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{employee.age.toString() ?? `-`}"
+                    tools:text="34" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_item_specialty"
+                style="@style/InfoItemContainer"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="23.11.1987" />
-        </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/layout_item_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layout_item_age"
-            style="@style/InfoItemContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/layout_item_birthday"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    style="@style/OverlineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_overline_specialty" />
 
-            <TextView
-                style="@style/OverlineText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_overline_age" />
-
-            <TextView
-                android:id="@+id/text_title_age"
-                style="@style/SingleSubheadText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="34" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_item_specialty"
-            style="@style/InfoItemContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/layout_item_age"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                style="@style/OverlineText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_overline_specialty" />
-
-            <TextView
-                android:id="@+id/text_title_specialty"
-                style="@style/SingleSubheadText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Дизайнер" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:id="@+id/text_title_specialty"
+                    style="@style/SingleSubheadText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{specialtiesTitle ?? `-`}"
+                    tools:text="Дизайнер" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
