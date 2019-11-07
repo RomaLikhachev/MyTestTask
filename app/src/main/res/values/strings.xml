@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MyTestTask</string>
+     <string name="app_name" translatable="false">MyTestTask</string>
+
+    <string name="title_specialty">Специальности</string>
+    <string name="title_employee">Сотрудники</string>
+    <string name="title_profile_employee">Профиль сотрудника</string>
+
+    <!-- Profile subhead -->
+    <string name="title_overline_name">Имя и фамилия</string>
+    <string name="title_overline_birthday">День рождения</string>
+    <string name="title_overline_age">Возраст</string>
+    <string name="title_overline_specialty">Специальность</string>
+
+    <string name="error_open_page">Не удалось открыть страницу. Попробуйте еще раз.</string>
+
+    <string name="format_full_name">%1$s %2$s</string>
+    <string name="format_birthday">%s г.</string>
 </resources>
