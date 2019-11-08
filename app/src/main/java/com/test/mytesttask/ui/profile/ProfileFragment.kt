@@ -1,15 +1,14 @@
 package com.test.mytesttask.ui.profile
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.lifecycle.ViewModelProviders
 import com.test.mytesttask.R
+import dagger.android.support.DaggerFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() = ProfileFragment()
