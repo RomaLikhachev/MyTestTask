@@ -7,6 +7,10 @@
         <variable
             name="employee"
             type="com.test.mytesttask.model.Employee"/>
+
+        <variable
+            name="navActionListener"
+            type="com.test.mytesttask.ui.employee.EmployeeRecyclerAdapter.NavActionListener" />
     </data>
 
     <TextView
@@ -19,5 +23,6 @@
         android:paddingEnd="16dp"
         android:background="?selectableItemBackground"
         android:text="@{employee.compositeTitle.value}"
+        android:onClick="@{() -> navActionListener.listAction(employee)}"
         tools:text="Roman Likhachev, 23" />
 </layout>
